@@ -1,24 +1,62 @@
 html,
 body {
+  --color-bg: #fff;
+  --color-fg: #3d3d3d;
+  --color-link: lighblue;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
 }
+
+/* ACA DEFINO LAS KEY */
+body[data-theme="dark"] {
+  --color-bg: #000;
+  --color-fg: #fafafa;
+  --color-link: yellow;
+
+  --background--main: hsl(222, 26%, 31%);
+  --background--keypad: hsl(223, 31%, 20%);
+  --background-screen: hsl(224, 36%, 15%);
+
+  --key--background: hsl(225, 21%, 49%);
+  --key-shadow: hsl(6, 70%, 34%);
+
+}
+
+body[data-theme="green"] {
+  --color-bg: green;
+  --color-fg: green;
+  --color-link: yellow;
+}
+
+body[data-theme="red"] {
+  --color-bg: red;
+  --color-fg: red;
+  --color-link: yellow;
+}
+
+/* ACA DEFINO DONDE LO USO */
+.content {
+  background-color: var(--color-bg);
+  color: var(--main-background);
+
+  /* a {
+    color: var(--color-link);
+  } */
+}
+
+
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
