@@ -6,7 +6,6 @@ import Button from '../Button/Button';
 export default function App() {
   // I read the theme from local storage and set it onto body data attribute earlier in my code, so
   const [theme, setTheme] = useState(1);
-  const [display, setDisplay] = useState("0");
   const [calc, setCalc] = useState({ sign: "", num: 0, res: 0 });
 
   // sync the changed theme value to local storage and body data attribute
@@ -29,24 +28,21 @@ export default function App() {
 
   };
 
-  const toLocaleString = (num) =>
-    String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
-
-  const removeSpaces = (num) => num.toString().replace(/\s/g, "");
+  const noBlancs = (num) => num.toString().replace(/\s/g, "");
 
   const numClickHandler = (e) => {
     e.preventDefault();
     const value = e.target.innerHTML;
 
-    if (removeSpaces(calc.num).length < 16) {
+    if (noBlancs(calc.num).length < 16) {
       setCalc({
         ...calc,
         num:
           calc.num === 0 && value === "0"
             ? "0"
-            : removeSpaces(calc.num) % 1 === 0
-              ? toLocaleString(Number(removeSpaces(calc.num + value)))
-              : toLocaleString(calc.num + value),
+            : noBlancs(calc.num) % 1 === 0
+              ? Number(noBlancs(calc.num + value))
+              : calc.num + value,
         res: !calc.sign ? 0 : calc.res,
       });
     }
@@ -90,12 +86,12 @@ export default function App() {
         res:
           calc.num === "0" && calc.sign === "/"
             ? "Can't divide with 0"
-            : toLocaleString(
-              math(
-                Number(removeSpaces(calc.res)),
-                Number(removeSpaces(calc.num)),
-                calc.sign
-              )
+            :
+            math(
+              Number(noBlancs(calc.res)),
+              Number(noBlancs(calc.num)),
+              calc.sign
+
             ),
         sign: "",
         num: 0,
@@ -103,18 +99,10 @@ export default function App() {
     }
   };
 
-  const invertClickHandler = () => {
-    setCalc({
-      ...calc,
-      num: calc.num ? toLocaleString(removeSpaces(calc.num) * -1) : 0,
-      res: calc.res ? toLocaleString(removeSpaces(calc.res) * -1) : 0,
-      sign: "",
-    });
-  };
 
   const percentClickHandler = () => {
-    let num = calc.num ? parseFloat(removeSpaces(calc.num)) : 0;
-    let res = calc.res ? parseFloat(removeSpaces(calc.res)) : 0;
+    let num = calc.num ? parseFloat(noBlancs(calc.num)) : 0;
+    let res = calc.res ? parseFloat(noBlancs(calc.res)) : 0;
 
     setCalc({
       ...calc,
@@ -171,11 +159,8 @@ export default function App() {
 
 
         <div className="display" >
-          <h1> {display} </h1>
           <h1> {calc.num ? calc.num : calc.res} </h1>
         </div>
-
-
 
         <div className="keyboard" >
           {
@@ -191,19 +176,17 @@ export default function App() {
                   className={cn}
                   value={btn}
                   onClick={
-                    btn === "C"
-                      ? resetClickHandler
-                      : btn === "+-"
-                        ? invertClickHandler
-                        : btn === "%"
-                          ? percentClickHandler
-                          : btn === "="
-                            ? equalsClickHandler
-                            : btn === "/" || btn === "X" || btn === "-" || btn === "+"
-                              ? signClickHandler
-                              : btn === "."
-                                ? commaClickHandler
-                                : numClickHandler
+                    i === 17 ?
+                      resetClickHandler
+                      : btn === "%" ?
+                        percentClickHandler
+                        : btn === "=" ?
+                          equalsClickHandler
+                          : btn === "/" || btn === "X" || btn === "-" || btn === "+" ?
+                            signClickHandler
+                            : btn === "." ?
+                              commaClickHandler
+                              : numClickHandler
                   }
                 />
               );
