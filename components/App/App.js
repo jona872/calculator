@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Button from '../Button/Button';
 
 
 export default function App() {
   // I read the theme from local storage and set it onto body data attribute earlier in my code, so
   const [theme, setTheme] = useState(1);
+  const [display, setDisplay] = useState("0");
 
   // sync the changed theme value to local storage and body data attribute
   useEffect(() => {
@@ -25,6 +27,15 @@ export default function App() {
 
 
   };
+
+
+  const btnValues = [
+    [7, 8, 9, "DEL"],
+    [4, 5, 6, "+"],
+    [1, 2, 3, "-"],
+    [".", 0, "/", "x"],
+    ["REST", "="],
+  ];
 
 
   return (
@@ -52,11 +63,32 @@ export default function App() {
 
 
         <div className="display" >
-          <h1>399,981</h1>
+          <h1> {display} </h1>
         </div>
 
-        <div className="keyboard" >
 
+
+        <div className="keyboard" >
+        {
+          btnValues.flat().map((btn, i) => {
+            let cn = "div" + ++i + " ";
+            cn = (btn === "=") ? cn + "intro" : cn;
+            cn = (btn === "DEL") ? cn + "special" : cn;
+            cn = (i === 17) ? cn + "special" : cn;
+
+            return (
+              <Button
+                key={i}
+                className={cn}
+                value={btn}
+                onClick={() => {
+                  console.log(`${btn} clicked!`);
+                }}
+              />
+            );
+          })
+        }
+{/* 
           <button className="div1"> 7 </button>
           <button className="div2"> 8 </button>
           <button className="div3"> 9</button>
@@ -75,10 +107,10 @@ export default function App() {
           <button className="div13"> . </button>
           <button className="div14"> 0 </button>
           <button className="div15"> / </button>
-          <button className="div16"> * </button>
+          <button className="div16"> x </button>
 
-          <button className="bigDiv1 special"> RESET </button>
-          <button className="bigDiv2 intro"> = </button>
+          <button className="div17 special"> RESET </button>
+          <button className="div18 intro"> = </button> */}
         </div>
 
       </div>

@@ -55,16 +55,17 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 12px;
-  grid-row-gap: 12px;
+  grid-row-gap: 15px;
   background-color: var(--background-keypad);
-  padding: 20px;
+  padding: 15px 24px;
+  border-radius: 10px;
 }
 
 .keyboard>button {
   cursor: pointer;
   border: none;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 0;
   padding: 0;
   display: flex;
@@ -73,11 +74,11 @@ body {
   text-align: center;
   flex-wrap: nowrap;
 
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   border-radius: 5px;
   /* offset-x | offset-y | blur-radius | color */
-  box-shadow: 0px 5px 0px var(--key-shadow);
+  box-shadow: 0px 3px 0px var(--key-shadow);
   color: var(--text-color);
   background-color: var(--key-background);
 }
@@ -296,13 +297,138 @@ body[data-theme="3"] {
 }
 
 /* Fila 5 */
-.bigDiv1 {
+.div17 {
   grid-area: 5 / 1 / 6 / 3;
   width: 133px !important;
 }
 
-.bigDiv2 {
+.div18 {
   grid-area: 5 / 3 / 6 / 5;
   width: 133px !important;
 }
 
+@media (min-width: 375px) {
+  body {
+    background-color: var(--background-calc);
+    width: 487px;
+  }
+
+  main {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calc {
+    background-color: var(--background-calc);
+    width: 100%;
+    height: 810px;
+    padding: 24px;
+  }
+
+  .calcHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: var(--text-color-header);
+  }
+
+  .calcHeader>span {
+    font-size: 1.7em;
+  }
+
+  .calcHeader>div {
+    display: flex;
+    gap: 24px;
+    font-size: 0.8em;
+  }
+
+  .display {
+    background-color: var(--background-screen);
+    color: var(--text-color-display);
+    padding: 35px 32px;
+    margin-top: 18px;
+    margin-bottom: 22px;
+    border-radius: 10px;
+    height: 115px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .display>h1 {
+    margin: 0;
+    font-size: 3.5em;
+  }
+
+  .keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 25px;
+    background-color: var(--background-keypad);
+    padding: 27px;
+    height: 434px;
+  }
+
+  .keyboard>button {
+    cursor: pointer;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: nowrap;
+
+    width: 93px;
+    height: 53px;
+    border-radius: 5px;
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0px 5px 0px var(--key-shadow);
+    color: var(--text-color);
+    background-color: var(--key-background);
+  }
+
+  .keyboard>button:active {
+    background-color: var(--key-active);
+  }
+
+  .special {
+    font-size: 1.5em !important;
+    color: var(--text-color-special) !important;
+    background-color: var(--key-background-special) !important;
+    box-shadow: 0px 5px 0px var(--key-shadow-special) !important;
+  }
+
+  .intro {
+    font-size: 1.5em !important;
+    color: var(--text-color-intro) !important;
+    background-color: var(--key-background-intro) !important;
+    box-shadow: 0px 5px 0px var(--key-shadow-intro) !important;
+  }
+
+  .special:active {
+    background-color: var(--key-special-active) !important;
+  }
+
+  .intro:active {
+    background-color: var(--key-intro-active) !important;
+  }
+
+  /* Fila 5 */
+  .div17 {
+    grid-area: 5 / 1 / 6 / 3;
+    width: 205px !important;
+  }
+
+  .div18 {
+    grid-area: 5 / 3 / 6 / 5;
+    width: 205px !important;
+  }
+}
