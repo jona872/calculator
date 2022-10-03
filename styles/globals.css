@@ -1,8 +1,6 @@
 html,
 body {
-  --color-bg: #fff;
-  --color-fg: #3d3d3d;
-  --color-link: lighblue;
+  color: hsl(221, 14%, 31%);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -13,52 +11,273 @@ body {
   box-sizing: border-box;
 }
 
-/* ACA DEFINO LAS KEY */
-body[data-theme="dark"] {
-  --color-bg: #000;
-  --color-fg: #fafafa;
-  --color-link: yellow;
-
-  --background--main: hsl(222, 26%, 31%);
-  --background--keypad: hsl(223, 31%, 20%);
-  --background-screen: hsl(224, 36%, 15%);
-
-  --key--background: hsl(225, 21%, 49%);
-  --key-shadow: hsl(6, 70%, 34%);
-
-}
-
-body[data-theme="green"] {
-  --color-bg: green;
-  --color-fg: green;
-  --color-link: yellow;
-}
-
-body[data-theme="red"] {
-  --color-bg: red;
-  --color-fg: red;
-  --color-link: yellow;
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
 /* ACA DEFINO DONDE LO USO */
 .content {
-  background-color: var(--color-bg);
-  color: var(--main-background);
+  background-color: var(--background-calc);
+}
 
-  /* a {
-    color: var(--color-link);
-  } */
+.calc {
+  background-color: var(--background-calc);
+  height: 671px;
+  width: 375px;
+  padding: 24px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.calcHeader {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-color-header);
+}
+
+
+.calcHeader>div {
+  display: flex;
+  gap: 30px;
+}
+
+.display {
+  background-color: var(--background-screen);
+  color: var(--text-color-display);
+  padding: 26px 25px;
+  margin-top: 30px;
+  margin-bottom: 24px;
+  text-align: right;
+}
+
+.display>h1 {
+  margin: 0;  
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  background-color: var(--background-keypad);
+  padding: 20px;
+}
+
+.keyboard>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: nowrap;
+
+  width: 60px;
+  height: 63px;
+  border: solid 1px black;
+  color: var(--text-color);
+  background-color: var(--key-background);
+}
+/* ToDo ------------------- */
+/* Agregar key--text color, special e intro  */
+.special {
+  color: var(--text-color-special) !important;
+  background-color: var(--key-background-special) !important;
+}
+
+.result {
+  color: var(--text-color-result);
+  background-color: var(--key-background-intro) !important;
+}
+/* end ToDo ------------------- */
+
+.theme-picker {
+  display: flex;
+  align-items: center;
+}
+
+.theme--picker--wrapper {
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme--picker--values {
+  display: flex;
+  flex-direction: row;
+  padding: 0 5px;
+  justify-content: space-between;
+
+}
+
+.theme--picker--circles {
+  width: 50px;
+  height: 15px;
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20x;
+  padding: 0;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.theme--active {
+  width: 12px;
+  height: 12px;
+  margin-top: 1px;
+  background-color: red;
+  border-radius: 50%;
 }
 
 
 
-@media (prefers-color-scheme: dark) {
+
+/* ACA DEFINO LAS KEY */
+body[data-theme="dark"] {
+  --background-calc: hsl(222, 26%, 31%);
+  --background-screen: hsl(224, 36%, 15%);
+  --background-keypad: hsl(223, 31%, 20%);
+
+  --key-background: hsl(0, 0%, 90%);
+  --key-background-toogle: hsl(6, 63%, 50%);
+  --key-shadow: hsl(6, 70%, 34%);
+
+  --key-background-special: hsl(225, 21%, 49%);
+
+  --key-background-intro: hsl(6, 70%, 34%);
+  --key-shadow-intro: hsl(28, 16%, 65%);
+
+  --text-color: hsl(221, 14%, 31%);
+  --text-color-display: white;
+  --text-color-special: hsl(0, 0, 100%);
+  --text-color-header: white;
+}
+
+body[data-theme="green"] {
+  --background-calc: hsl(0, 0%, 90%);
+  --background-screen: hsl(0, 0%, 93%);
+  --background-keypad: hsl(0, 5%, 81%);
+
+  --key-background: hsl(30, 25%, 89%);;
+  --key-background-toogle: hsl(6, 63%, 50%);
+  --key-shadow: hsl(6, 70%, 34%);
+
+  --key-background-special: hsl(185, 42%, 37%);
+
+  --key-background-intro: hsl(25, 98%, 40%);
+  --key-shadow-intro: hsl(28, 16%, 65%);
+
+  --text-color: hsl(60, 10%, 19%);
+  --text-color-display: hsl(60, 10%, 19%);
+  --text-color-special: hsl(0, 0, 100%);
+  --text-color-header: hsl(60, 10%, 19%);
+}
+
+body[data-theme="red"] {
+  --background-calc: hsl(268, 75%, 9%);
+  --background-screen: hsl(268, 71%, 12%);
+  --background-keypad: hsl(268, 71%, 12%);
+
+  --key-background: hsl(268, 47%, 21%);
+  --key-background-toogle: hsl(176, 100%, 44%);
+  --key-shadow: hsl(6, 70%, 34%);
+
+  --key-background-special: hsl(281, 89%, 26%);
+
+  --key-background-intro: hsl(176, 100%, 44%);
+  --key-shadow-intro: hsl(28, 16%, 65%);
+
+  --text-color: hsl(52, 100%, 62%);
+  --text-color-display: hsl(52, 100%, 62%);
+  --text-color-special: hsl(198, 20%, 13%);
+  --text-color-header: hsl(52, 100%, 62%);
+}
+
+
+/* grid-row-start , grid-column-start , grid-row-end, grid-column-end */
+
+/* Fila 1 */
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.div2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.div3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.div4 {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+/* Fila 2 */
+.div5 {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.div6 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.div7 {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.div8 {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+/* Fila 3 */
+.div9 {
+  grid-area: 3 / 1 / 4 / 2;
+}
+
+.div10 {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.div11 {
+  grid-area: 3 / 3 / 4 / 4;
+}
+
+.div12 {
+  grid-area: 3 / 4 / 4 / 5;
+}
+
+/* Fila 4 */
+.div13 {
+  grid-area: 4 / 1 / 5 / 2;
+}
+
+.div14 {
+  grid-area: 4 / 2 / 5 / 3;
+}
+
+.div15 {
+  grid-area: 4 / 3 / 5 / 4;
+}
+
+.div16 {
+  grid-area: 4 / 4 / 5 / 5;
+}
+
+/* Fila 5 */
+.bigDiv1 {
+  grid-area: 5 / 1 / 6 / 3;
+  width: 133px !important;
+}
+
+.bigDiv2 {
+  grid-area: 5 / 3 / 6 / 5;
+  width: 133px !important;
+}
+
+
+
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-
-  body {
-    color: white;
-    background: black;
-  }
-}
+} */
