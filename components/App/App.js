@@ -1,13 +1,22 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Button from '../Button/Button';
+import Circle from '../Circle/Circle';
 
 
 export default function App() {
   // I read the theme from local storage and set it onto body data attribute earlier in my code, so
   const [theme, setTheme] = useState(1);
   const [calc, setCalc] = useState({ sign: "", num: 0, res: 0 });
+  const [activeLight, setActiveLight] = useState(initialSetup());
 
+  function initialSetup() {
+    return [
+      { "key": "1", "enable": false },
+      { "key": "2", "enable": false },
+      { "key": "3", "enable": false }
+    ]
+  }
   // sync the changed theme value to local storage and body data attribute
   useEffect(() => {
     if (theme && theme !== document.body.dataset.theme) {
@@ -21,6 +30,21 @@ export default function App() {
   const selectTheme = (e) => {
     e.preventDefault();
     const nextTheme = e.currentTarget.innerText;
+    // console.log(activeLight[nextTheme - 1]);
+    setActiveLight(initialSetup());
+    setActiveLight(prevState => prevState.map(element => {
+      // console.log(nextTheme === element.key);
+      return (element.key === nextTheme) ?
+        {
+          ...element,
+          enable: true
+        } :
+        element
+    }));
+    // console.log("PostChange");
+    // console.log(activeLight);
+
+
     if (nextTheme === "1") setTheme(1);
     if (nextTheme === "2") setTheme(2);
     if (nextTheme === "3") setTheme(3);
@@ -121,10 +145,6 @@ export default function App() {
     });
   };
 
-
-
-
-
   const btnValues = [
     [7, 8, 9, "DEL"],
     [4, 5, 6, "+"],
@@ -132,7 +152,6 @@ export default function App() {
     [".", 0, "/", "x"],
     ["REST", "="],
   ];
-
 
   return (
     <div className="content">
@@ -149,9 +168,15 @@ export default function App() {
                 <div onClick={selectTheme}> 3 </div>
               </div>
               <div className='theme--picker--circles'>
+                {
+                  activeLight.map((elem) => {
+                  return (<Circle key={elem.key} id={elem.key} holded={elem.enable} />)
+                  })
+                }
+
+                {/* <div className='theme--active'>  </div>
                 <div className='theme--active'>  </div>
-                <div className='theme--active'>  </div>
-                <div className='theme--active'>  </div>
+                <div className='theme--active'>  </div> */}
               </div>
             </div>
           </div>
