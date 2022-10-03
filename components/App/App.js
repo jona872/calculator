@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function App() {
   // I read the theme from local storage and set it onto body data attribute earlier in my code, so
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState(1);
 
   // sync the changed theme value to local storage and body data attribute
   useEffect(() => {
@@ -18,11 +18,10 @@ export default function App() {
 
   const selectTheme = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget.innerText);
     const nextTheme = e.currentTarget.innerText;
-    if (nextTheme === "1") setTheme("dark");
-    if (nextTheme === "2") setTheme("green");
-    if (nextTheme === "3") setTheme("red");
+    if (nextTheme === "1") setTheme(1);
+    if (nextTheme === "2") setTheme(2);
+    if (nextTheme === "3") setTheme(3);
 
 
   };
@@ -58,28 +57,28 @@ export default function App() {
 
         <div className="keyboard" >
 
-          <div className="div1"> 7 </div>
-          <div className="div2"> 8 </div>
-          <div className="div3"> 9</div>
-          <div className="div4 special"> Del </div>
+          <button className="div1"> 7 </button>
+          <button className="div2"> 8 </button>
+          <button className="div3"> 9</button>
+          <button className="div4 special"> DEL </button>
 
-          <div className="div5"> 4 </div>
-          <div className="div6"> 5 </div>
-          <div className="div7"> 6 </div>
-          <div className="div8"> + </div>
+          <button className="div5"> 4 </button>
+          <button className="div6"> 5 </button>
+          <button className="div7"> 6 </button>
+          <button className="div8"> + </button>
 
-          <div className="div9"> 1 </div>
-          <div className="div10"> 2 </div>
-          <div className="div11"> 3 </div>
-          <div className="div12"> - </div>
+          <button className="div9"> 1 </button>
+          <button className="div10"> 2 </button>
+          <button className="div11"> 3 </button>
+          <button className="div12"> - </button>
 
-          <div className="div13"> . </div>
-          <div className="div14"> 0 </div>
-          <div className="div15"> / </div>
-          <div className="div16"> * </div>
+          <button className="div13"> . </button>
+          <button className="div14"> 0 </button>
+          <button className="div15"> / </button>
+          <button className="div16"> * </button>
 
-          <div className="bigDiv1 special"> RESET </div>
-          <div className="bigDiv2 result"> = </div>
+          <button className="bigDiv1 special"> RESET </button>
+          <button className="bigDiv2 intro"> = </button>
         </div>
 
       </div>

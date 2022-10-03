@@ -1,19 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
+
 html,
 body {
   color: hsl(221, 14%, 31%);
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
-/* ACA DEFINO DONDE LO USO */
 .content {
   background-color: var(--background-calc);
 }
@@ -23,7 +22,6 @@ body {
   height: 671px;
   width: 375px;
   padding: 24px;
-  font-family: 'Outfit', sans-serif;
 }
 
 .calcHeader {
@@ -41,14 +39,15 @@ body {
 .display {
   background-color: var(--background-screen);
   color: var(--text-color-display);
-  padding: 26px 25px;
+  padding: 24px;
   margin-top: 30px;
   margin-bottom: 24px;
   text-align: right;
+  border-radius: 10px;
 }
 
 .display>h1 {
-  margin: 0;  
+  margin: 0;
 }
 
 .keyboard {
@@ -61,31 +60,55 @@ body {
   padding: 20px;
 }
 
-.keyboard>div {
+.keyboard>button {
+  cursor: pointer;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   flex-wrap: nowrap;
 
-  width: 60px;
-  height: 63px;
-  border: solid 1px black;
+  width: 58px;
+  height: 58px;
+  border-radius: 5px;
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 0px 5px 0px var(--key-shadow);
   color: var(--text-color);
   background-color: var(--key-background);
 }
-/* ToDo ------------------- */
-/* Agregar key--text color, special e intro  */
-.special {
-  color: var(--text-color-special) !important;
-  background-color: var(--key-background-special) !important;
+
+.keyboard>button:active {
+  background-color: var(--key-active);
 }
 
-.result {
-  color: var(--text-color-result);
-  background-color: var(--key-background-intro) !important;
+
+.special {
+  font-size: 1em !important;
+  color: var(--text-color-special) !important;
+  background-color: var(--key-background-special) !important;
+  box-shadow: 0px 5px 0px var(--key-shadow-special) !important;
 }
-/* end ToDo ------------------- */
+
+.intro {
+  font-size: 1em !important;
+  color: var(--text-color-intro) !important;
+  background-color: var(--key-background-intro) !important;
+  box-shadow: 0px 5px 0px var(--key-shadow-intro) !important;
+}
+
+.special:active {
+  background-color: var(--key-special-active) !important;
+}
+
+.intro:active {
+  background-color: var(--key-intro-active) !important;
+}
+
 
 .theme-picker {
   display: flex;
@@ -130,69 +153,79 @@ body {
 
 
 
-/* ACA DEFINO LAS KEY */
-body[data-theme="dark"] {
+body[data-theme="1"] {
   --background-calc: hsl(222, 26%, 31%);
   --background-screen: hsl(224, 36%, 15%);
   --background-keypad: hsl(223, 31%, 20%);
 
-  --key-background: hsl(0, 0%, 90%);
-  --key-background-toogle: hsl(6, 63%, 50%);
-  --key-shadow: hsl(6, 70%, 34%);
+  --key-background: hsl(30, 25%, 89%);
+  --key-shadow: hsl(28, 16%, 65%);
+  --key-active: hsl(30, 25%, 100%);
 
   --key-background-special: hsl(225, 21%, 49%);
+  --key-shadow-special: hsl(224, 28%, 35%);
+  --key-special-active: hsl(225, 21%, 69%);
 
-  --key-background-intro: hsl(6, 70%, 34%);
-  --key-shadow-intro: hsl(28, 16%, 65%);
+
+  --key-background-intro: hsl(6, 63%, 50%);
+  --key-shadow-intro: hsl(6, 70%, 34%);
+  --key-intro-active: hsl(6, 63%, 70%);
 
   --text-color: hsl(221, 14%, 31%);
   --text-color-display: white;
-  --text-color-special: hsl(0, 0, 100%);
   --text-color-header: white;
+  --text-color-special: white;
+  --text-color-intro: white;
 }
 
-body[data-theme="green"] {
+body[data-theme="2"] {
   --background-calc: hsl(0, 0%, 90%);
   --background-screen: hsl(0, 0%, 93%);
   --background-keypad: hsl(0, 5%, 81%);
 
-  --key-background: hsl(30, 25%, 89%);;
-  --key-background-toogle: hsl(6, 63%, 50%);
-  --key-shadow: hsl(6, 70%, 34%);
+  --key-background: hsl(45, 7%, 89%);
+  --key-shadow: hsl(35, 11%, 61%);
+  --key-active: hsl(45, 7%, 100%);
 
   --key-background-special: hsl(185, 42%, 37%);
+  --key-shadow-special: hsl(185, 58%, 25%);
+  --key-special-active: hsl(185, 42%, 57%);
 
   --key-background-intro: hsl(25, 98%, 40%);
-  --key-shadow-intro: hsl(28, 16%, 65%);
+  --key-shadow-intro: hsl(25, 99%, 27%);
+  --key-intro-active: hsl(25, 98%, 60%);
 
   --text-color: hsl(60, 10%, 19%);
-  --text-color-display: hsl(60, 10%, 19%);
-  --text-color-special: hsl(0, 0, 100%);
   --text-color-header: hsl(60, 10%, 19%);
+  --text-color-display: hsl(60, 10%, 19%);
+  --text-color-special: white;
+  --text-color-intro: white;
 }
 
-body[data-theme="red"] {
+body[data-theme="3"] {
   --background-calc: hsl(268, 75%, 9%);
   --background-screen: hsl(268, 71%, 12%);
   --background-keypad: hsl(268, 71%, 12%);
 
   --key-background: hsl(268, 47%, 21%);
-  --key-background-toogle: hsl(176, 100%, 44%);
-  --key-shadow: hsl(6, 70%, 34%);
+  --key-shadow: hsl(290, 70%, 36%);
+  --key-active: hsl(268, 47%, 41%);
 
   --key-background-special: hsl(281, 89%, 26%);
+  --key-shadow-special: hsl(285, 91%, 52%);
+  --key-special-active: hsl(281, 89%, 46%);
 
   --key-background-intro: hsl(176, 100%, 44%);
-  --key-shadow-intro: hsl(28, 16%, 65%);
+  --key-shadow-intro: hsl(177, 92%, 70%);
+  --key-intro-active: hsl(176, 100%, 80%);
 
   --text-color: hsl(52, 100%, 62%);
-  --text-color-display: hsl(52, 100%, 62%);
-  --text-color-special: hsl(198, 20%, 13%);
   --text-color-header: hsl(52, 100%, 62%);
+  --text-color-display: hsl(52, 100%, 62%);
+  --text-color-special: white;
+  --text-color-intro: hsl(198, 20%, 13%);
 }
 
-
-/* grid-row-start , grid-column-start , grid-row-end, grid-column-end */
 
 /* Fila 1 */
 .div1 {
@@ -273,11 +306,3 @@ body[data-theme="red"] {
   width: 133px !important;
 }
 
-
-
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
