@@ -114,7 +114,7 @@ export default function App() {
         ...calc,
         res:
           calc.num === "0" && calc.sign === "/"
-            ? "Can't divide with 0"
+            ? "0 not allowed"
             :
             math(
               Number(noBlancs(calc.res)),
