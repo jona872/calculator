@@ -126,8 +126,8 @@ body {
 .theme--picker--values {
   display: flex;
   flex-direction: row;
-  padding: 0 5px;
-  justify-content: space-between;
+  padding: 0;
+  justify-content: space-evenly;
 
 }
 
@@ -137,15 +137,15 @@ body {
   background-color: blue;
   display: flex;
   flex-direction: row;
-  border-radius: 20x;
+  border-radius: 20px;
   padding: 0;
   justify-content: space-around;
   align-items: center;
 }
 
 .theme--active {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   margin-top: 1px;
   background-color: red;
   border-radius: 50%;

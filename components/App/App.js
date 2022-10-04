@@ -8,11 +8,19 @@ export default function App() {
   // I read the theme from local storage and set it onto body data attribute earlier in my code, so
   const [theme, setTheme] = useState(1);
   const [calc, setCalc] = useState({ sign: "", num: 0, res: 0 });
-  const [activeLight, setActiveLight] = useState(initialSetup());
+  const [activeLight, setActiveLight] = useState(defaultState());
 
   function initialSetup() {
     return [
       { "key": "1", "enable": false },
+      { "key": "2", "enable": false },
+      { "key": "3", "enable": false }
+    ]
+  }
+
+  function defaultState() {
+    return [
+      { "key": "1", "enable": true },
       { "key": "2", "enable": false },
       { "key": "3", "enable": false }
     ]
@@ -30,10 +38,12 @@ export default function App() {
   const selectTheme = (e) => {
     e.preventDefault();
     const nextTheme = e.currentTarget.innerText;
-    // console.log(activeLight[nextTheme - 1]);
+    if (nextTheme === "1") setTheme(1);
+    if (nextTheme === "2") setTheme(2);
+    if (nextTheme === "3") setTheme(3);
     setActiveLight(initialSetup());
     setActiveLight(prevState => prevState.map(element => {
-      // console.log(nextTheme === element.key);
+
       return (element.key === nextTheme) ?
         {
           ...element,
@@ -41,13 +51,8 @@ export default function App() {
         } :
         element
     }));
-    // console.log("PostChange");
-    // console.log(activeLight);
 
 
-    if (nextTheme === "1") setTheme(1);
-    if (nextTheme === "2") setTheme(2);
-    if (nextTheme === "3") setTheme(3);
 
 
   };
@@ -173,10 +178,6 @@ export default function App() {
                   return (<Circle key={elem.key} id={elem.key} holded={elem.enable} />)
                   })
                 }
-
-                {/* <div className='theme--active'>  </div>
-                <div className='theme--active'>  </div>
-                <div className='theme--active'>  </div> */}
               </div>
             </div>
           </div>
