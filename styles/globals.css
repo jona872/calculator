@@ -134,7 +134,7 @@ body {
 .theme--picker--circles {
   width: 50px;
   height: 15px;
-  background-color: blue;
+  background-color: var(--background-theme);
   display: flex;
   flex-direction: row;
   border-radius: 20px;
@@ -158,6 +158,7 @@ body[data-theme="1"] {
   --background-calc: hsl(222, 26%, 31%);
   --background-screen: hsl(224, 36%, 15%);
   --background-keypad: hsl(223, 31%, 20%);
+  --background-theme: hsl(223, 31%, 20%);
 
   --key-background: hsl(30, 25%, 89%);
   --key-shadow: hsl(28, 16%, 65%);
@@ -183,6 +184,7 @@ body[data-theme="2"] {
   --background-calc: hsl(0, 0%, 90%);
   --background-screen: hsl(0, 0%, 93%);
   --background-keypad: hsl(0, 5%, 81%);
+  --background-theme: hsl(0, 5%, 81%);
 
   --key-background: hsl(45, 7%, 89%);
   --key-shadow: hsl(35, 11%, 61%);
@@ -207,6 +209,7 @@ body[data-theme="3"] {
   --background-calc: hsl(268, 75%, 9%);
   --background-screen: hsl(268, 71%, 12%);
   --background-keypad: hsl(268, 71%, 12%);
+  --background-theme: hsl(268, 71%, 12%);
 
   --key-background: hsl(268, 47%, 21%);
   --key-shadow: hsl(290, 70%, 36%);
@@ -307,7 +310,8 @@ body[data-theme="3"] {
   width: 133px !important;
 }
 
-@media (min-width: 375px) {
+/* @media (min-width: 375px) { */
+@media (min-width: 560px) {
   body {
     background-color: var(--background-calc);
     width: 487px;
